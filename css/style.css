@@ -1,3 +1,4 @@
+/* общие стили и оберток */
 * {
     margin: 0;
     padding: 0;
@@ -28,6 +29,7 @@
     margin-right: 55px;
 }
 
+/* первый блок */
 .form-box_desc {
     display: flex;
     flex-direction: column;
@@ -46,6 +48,7 @@
     line-height: 145%;
 }
 
+/* ! второй блок */
 .form-box_form {
     display: flex;
     flex-direction: column;
@@ -70,6 +73,7 @@
     padding: 5px;
 }
 
+/* ? третий блок */
 .form-box_form-comments {
     min-height: 130px;
 }
@@ -85,4 +89,40 @@ fieldset {
     display: flex;
     align-items: center;
     padding: 0 17px 17px 17px;
+}
+
+.form_box_send {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form_box_send button {
+    min-width: 200px;
+    height: 52px;
+    background-color: orange;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+}
+
+.form_box_send label {
+    font-size: 12px;
+}
+
+.form_box_send-checkbox {
+    display: flex;
+    gap: 10px;
+}
+
+.form_box_send-checkbox input {
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+}
+
+.form_box_send-checkbox a {
+    text-decoration: none;
+    color: orange;
 }

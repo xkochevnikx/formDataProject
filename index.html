@@ -9,7 +9,9 @@
     <body>
         <div class="container">
             <div class="form-box">
+                <!-- обертка -->
                 <div class="form-box_wrapper">
+                    <!-- Первый  блок с описанием начало -->
                     <div class="form-box_desc">
                         <h3 class="form-box_desc-title">Обратный звонок</h3>
                         <p class="form-box_desc-description">
@@ -17,7 +19,9 @@
                             ближайшее время.
                         </p>
                     </div>
+                    <!-- Первый  блок с описанием конец -->
 
+                    <!--!Второй  блок с формой начало -->
                     <form class="form-box_form">
                         <fieldset>
                             <legend>Ваше имя</legend>
@@ -52,11 +56,20 @@
                             ></textarea>
                         </fieldset>
                     </form>
+                    <!--!Второй  блок с формой конец -->
 
+                    <!--todo Третий  блок с формой отправки начало -->
                     <div class="form_box_send">
-                        <input type="checkbox" />
+                        <div class="form_box_send-checkbox">
+                            <input type="checkbox" name="rules" id="rules" />
+                            <label for="rules"
+                                >Я ознакомлен и согласен <br />
+                                <a href="">с правилами</a></label
+                            >
+                        </div>
                         <button>Отправить</button>
                     </div>
+                    <!--todo Третий  блок с формой отправки конец -->
                 </div>
             </div>
         </div>
