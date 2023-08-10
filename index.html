@@ -26,6 +26,7 @@
                         <fieldset>
                             <legend>Ваше имя<span>*</span></legend>
                             <input
+                                name="name"
                                 class="input"
                                 type="text"
                                 placeholder="Укажите свое имя"
@@ -35,6 +36,7 @@
                         <fieldset>
                             <legend>Номер телефона<span>*</span></legend>
                             <input
+                                name="phone"
                                 class="input"
                                 type="tel"
                                 placeholder="+7 (___)-___-__-__"
@@ -45,7 +47,7 @@
                         <fieldset>
                             <legend>Выбранная услуга<span>*</span></legend>
                             <select
-                                name=""
+                                name="service"
                                 class="form-box_form-select"
                                 form="form"
                             >
@@ -70,23 +72,27 @@
                                 rows="5"
                             ></textarea>
                         </fieldset>
+                        <!--todo Третий  блок с формой отправки начало -->
+                        <div class="form_box_send">
+                            <div class="form_box_send-checkbox">
+                                <input
+                                    type="checkbox"
+                                    name="rules"
+                                    id="rules"
+                                />
+                                <label for="rules"
+                                    >Я ознакомлен и согласен <br />
+                                    <a href="">с правилами</a></label
+                                >
+                            </div>
+                            <button type="submit">Отправить</button>
+                        </div>
+                        <!--todo Третий  блок с формой отправки конец -->
                     </form>
                     <!--!Второй  блок с формой конец -->
-
-                    <!--todo Третий  блок с формой отправки начало -->
-                    <div class="form_box_send">
-                        <div class="form_box_send-checkbox">
-                            <input type="checkbox" name="rules" id="rules" />
-                            <label for="rules"
-                                >Я ознакомлен и согласен <br />
-                                <a href="">с правилами</a></label
-                            >
-                        </div>
-                        <button>Отправить</button>
-                    </div>
-                    <!--todo Третий  блок с формой отправки конец -->
                 </div>
             </div>
         </div>
+        <script src="./js/main.js"></script>
     </body>
 </html>
