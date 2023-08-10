@@ -29,6 +29,15 @@
     margin-right: 55px;
 }
 
+fieldset {
+    display: flex;
+    align-items: center;
+    padding: 0 17px 17px 17px;
+    border-radius: 6px;
+    border: 1px solid #000;
+    opacity: 0.4;
+}
+
 /* первый блок */
 .form-box_desc {
     display: flex;
@@ -62,12 +71,6 @@
     outline: none;
 }
 
-.form-box_form fieldset {
-    border-radius: 6px;
-    border: 1px solid #000;
-    opacity: 0.4;
-}
-
 .form-box_form legend {
     margin-left: 5px;
     padding: 5px;
@@ -83,12 +86,6 @@
     width: 100%;
     border: none;
     outline: none;
-}
-
-fieldset {
-    display: flex;
-    align-items: center;
-    padding: 0 17px 17px 17px;
 }
 
 .form_box_send {
