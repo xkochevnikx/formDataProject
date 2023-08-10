@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FormDataProject</title>
+        <link rel="stylesheet" href="./css/style.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="form-box">
+                <div class="form-box_wrapper">
+                    <div class="form-box_desc">
+                        <h3 class="form-box_desc-title">Обратный звонок</h3>
+                        <p class="form-box_desc-description">
+                            Заполните форму ниже и мы свяжемся с Вами в
+                            ближайшее время.
+                        </p>
+                    </div>
+
+                    <form class="form-box_form">
+                        <fieldset>
+                            <legend>Ваше имя</legend>
+                            <input
+                                class="input"
+                                type="text"
+                                placeholder="Укажите свое имя"
+                                autofocus
+                            />
+                        </fieldset>
+                        <fieldset>
+                            <legend>Номер телефона</legend>
+                            <input
+                                class="input"
+                                type="tel"
+                                placeholder="+7 (___)-___-__-__"
+                                autocomplete
+                                autofocus
+                            />
+                        </fieldset>
+                        <fieldset>
+                            <legend>Выбранная услуга</legend>
+                            <select></select>
+                        </fieldset>
+                        <fieldset class="form-box_form-comments">
+                            <legend>Комментарий</legend>
+                            <textarea
+                                placeholder="Опишите Ваш вопрос или просьбу и удобное время для связи."
+                                name="comment"
+                                cols="40"
+                                rows="5"
+                            ></textarea>
+                        </fieldset>
+                    </form>
+
+                    <div class="form_box_send">
+                        <input type="checkbox" />
+                        <button>Отправить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
