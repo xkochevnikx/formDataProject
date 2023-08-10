@@ -22,9 +22,9 @@
                     <!-- Первый  блок с описанием конец -->
 
                     <!--!Второй  блок с формой начало -->
-                    <form class="form-box_form">
+                    <form class="form-box_form" id="form">
                         <fieldset>
-                            <legend>Ваше имя</legend>
+                            <legend>Ваше имя<span>*</span></legend>
                             <input
                                 class="input"
                                 type="text"
@@ -33,7 +33,7 @@
                             />
                         </fieldset>
                         <fieldset>
-                            <legend>Номер телефона</legend>
+                            <legend>Номер телефона<span>*</span></legend>
                             <input
                                 class="input"
                                 type="tel"
@@ -43,8 +43,23 @@
                             />
                         </fieldset>
                         <fieldset>
-                            <legend>Выбранная услуга</legend>
-                            <select></select>
+                            <legend>Выбранная услуга<span>*</span></legend>
+                            <select
+                                name=""
+                                class="form-box_form-select"
+                                form="form"
+                            >
+                                <option selected disabled>
+                                    Выберите услугу из списка
+                                </option>
+                                <option value="life">Страхование жизни</option>
+                                <option value="business">
+                                    Страхование бизнеса
+                                </option>
+                                <option value="property">
+                                    Страхование имущества
+                                </option>
+                            </select>
                         </fieldset>
                         <fieldset class="form-box_form-comments">
                             <legend>Комментарий</legend>
