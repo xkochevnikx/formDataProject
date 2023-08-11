@@ -163,3 +163,26 @@ fieldset:hover {
     border-radius: 5px;
     font-size: 18px;
 }
+
+/* loader */
+.loader-box {
+    display: none;
+}
+
+.loader {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 10px peru dashed;
+    animation: rotate 3s infinite linear;
+    animation-direction: alternate;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg) scale(1);
+    }
+    to {
+        transform: rotate(360deg) scale(1.3);
+    }
+}

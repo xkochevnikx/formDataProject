@@ -37,13 +37,19 @@ let mapTypeErrorMessage = {
     service: 'Выберете услугу',
 };
 
-function alertMessage(element) {
+function addAllAlertMessage(element, errorString) {
     addErrorClass(element);
     let parentDiv = element.closest('div');
     let alert = document.createElement('span');
     alert.setAttribute('id', 'errorSpan');
-    alert.textContent = `${mapTypeErrorMessage[element.name]}`;
-    parentDiv.appendChild(alert);
+    if (errorString) {
+        alert.textContent = `${errorString}`;
+        parentDiv.appendChild(alert);
+    }
+    if (!errorString) {
+        alert.textContent = `${mapTypeErrorMessage[element.name]}`;
+        parentDiv.appendChild(alert);
+    }
 }
 
 function removeError(element) {
@@ -64,11 +70,27 @@ function validate(formNode) {
             !element.value.trim()
         ) {
             result = true;
-            alertMessage(element);
+            addAllAlertMessage(element);
+        }
+        if (
+            element.tagName === 'INPUT' &&
+            element.value.trim() &&
+            element.dataset.length
+        ) {
+            if (
+                element.value.length > element.dataset.length ||
+                element.value.length < element.dataset.length
+            ) {
+                result = true;
+                addAllAlertMessage(
+                    element,
+                    'Номер телефона должен состоять из 12 символов.'
+                );
+            }
         }
         if (element.tagName === 'SELECT' && !element.value.trim()) {
             result = true;
-            alertMessage(element);
+            addAllAlertMessage(element);
         }
         if (element.type === 'checkbox' && !element.checked) {
             result = true;
@@ -78,16 +100,28 @@ function validate(formNode) {
     return result;
 }
 
+function loader() {
+    let wrap = document.querySelector('.form-box_wrapper');
+    Array.from(wrap.children).map((child) => {
+        child.remove();
+    });
+    wrap.style.cssText = 'margin: 0; padding: 0';
+    let loader = wrap.nextElementSibling;
+    loader.style.cssText =
+        'display: block; width: 100%; display: flex; flex-direction: column; gap: 20px; align-items: center; justify-content: center; ';
+}
+
 async function handleSubmit(e) {
     e.preventDefault();
+    console.log(validate(e.target));
     if (!validate(e.target)) {
         let data = serializeForm(e.target);
-        // loader();
+        loader();
         let response = await fetchUsers(data);
-        if (response.ok) {
-            console.log(response);
-        } else {
-            // errorFetch();
-        }
+        // if (response.ok) {
+        //     successFetch();
+        // } else {
+        //     errorFetch();
+        // }
     }
 }
