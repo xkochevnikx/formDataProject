@@ -23,69 +23,97 @@
 
                     <!--!Второй  блок с формой начало -->
                     <form class="form-box_form" id="form">
-                        <fieldset>
-                            <legend>Ваше имя<span>*</span></legend>
-                            <input
-                                name="name"
-                                class="input"
-                                type="text"
-                                placeholder="Укажите свое имя"
-                                autofocus
-                            />
-                        </fieldset>
-                        <fieldset>
-                            <legend>Номер телефона<span>*</span></legend>
-                            <input
-                                name="phone"
-                                class="input"
-                                type="tel"
-                                placeholder="+7 (___)-___-__-__"
-                                autocomplete
-                                autofocus
-                            />
-                        </fieldset>
-                        <fieldset>
-                            <legend>Выбранная услуга<span>*</span></legend>
-                            <select
-                                name="service"
-                                class="form-box_form-select"
-                                form="form"
-                            >
-                                <option selected disabled>
-                                    Выберите услугу из списка
-                                </option>
-                                <option value="life">Страхование жизни</option>
-                                <option value="business">
-                                    Страхование бизнеса
-                                </option>
-                                <option value="property">
-                                    Страхование имущества
-                                </option>
-                            </select>
-                        </fieldset>
-                        <fieldset class="form-box_form-comments">
-                            <legend>Комментарий</legend>
-                            <textarea
-                                placeholder="Опишите Ваш вопрос или просьбу и удобное время для связи."
-                                name="comment"
-                                cols="40"
-                                rows="5"
-                            ></textarea>
-                        </fieldset>
+                        <div>
+                            <fieldset>
+                                <legend>
+                                    Ваше имя<span class="form-box_form-star"
+                                        >*</span
+                                    >
+                                </legend>
+                                <input
+                                    name="name"
+                                    class="input"
+                                    type="text"
+                                    placeholder="Укажите свое имя"
+                                    autofocus
+                                />
+                            </fieldset>
+                        </div>
+                        <div>
+                            <fieldset>
+                                <legend>
+                                    Номер телефона<span
+                                        class="form-box_form-star"
+                                        >*</span
+                                    >
+                                </legend>
+                                <input
+                                    name="phone"
+                                    class="input"
+                                    type="tel"
+                                    placeholder="+7 (___)-___-__-__"
+                                    autocomplete
+                                    autofocus
+                                />
+                            </fieldset>
+                        </div>
+                        <div>
+                            <fieldset>
+                                <legend>
+                                    Выбранная услуга<span
+                                        class="form-box_form-star"
+                                        >*</span
+                                    >
+                                </legend>
+                                <select
+                                    name="service"
+                                    class="form-box_form-select"
+                                    form="form"
+                                >
+                                    <option value="" selected disabled>
+                                        Выберите услугу из списка
+                                    </option>
+                                    <option value="life">
+                                        Страхование жизни
+                                    </option>
+                                    <option value="business">
+                                        Страхование бизнеса
+                                    </option>
+                                    <option value="property">
+                                        Страхование имущества
+                                    </option>
+                                </select>
+                            </fieldset>
+                        </div>
+                        <div>
+                            <fieldset class="form-box_form-comments">
+                                <legend>Комментарий</legend>
+                                <textarea
+                                    placeholder="Опишите Ваш вопрос или просьбу и удобное время для связи."
+                                    name="comment"
+                                    cols="40"
+                                    rows="5"
+                                ></textarea>
+                            </fieldset>
+                        </div>
+
                         <!--todo Третий  блок с формой отправки начало -->
                         <div class="form_box_send">
-                            <div class="form_box_send-checkbox">
-                                <input
-                                    value="1"
-                                    type="checkbox"
-                                    name="rules"
-                                    id="rules"
-                                />
-                                <label for="rules"
-                                    >Я ознакомлен и согласен <br />
-                                    <a href="">с правилами</a></label
-                                >
+                            <div class="form_box_send-box">
+                                <fieldset class="form_box_send-checkbox">
+                                    <input
+                                        value=""
+                                        type="checkbox"
+                                        name="rules"
+                                        id="rules"
+                                    />
+                                </fieldset>
+                                <p>
+                                    Я ознакомлен и согласен <br />
+                                    <a href="">с правилами</a>
+                                </p>
                             </div>
+
                             <button type="submit">Отправить</button>
                         </div>
                         <!--todo Третий  блок с формой отправки конец -->

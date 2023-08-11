@@ -38,6 +38,16 @@ fieldset {
     opacity: 0.4;
 }
 
+.error {
+    border: 1px solid red;
+}
+
+#errorSpan {
+    margin-top: 14px;
+    margin-left: 16px;
+    color: red;
+}
+
 fieldset:hover {
     opacity: 1;
 }
@@ -68,13 +78,14 @@ fieldset:hover {
     gap: 28px;
 }
 
-.form-box_form span {
+.form-box_form-star {
     position: relative;
     bottom: 4px;
     left: 2px;
 }
 
 .input {
+    background: transparent;
     border: none;
     width: 100%;
     height: 100%;
@@ -96,7 +107,6 @@ fieldset:hover {
     width: 100%;
 }
 
-/* ? третий блок */
 .form-box_form-comments {
     min-height: 130px;
 }
@@ -108,10 +118,40 @@ fieldset:hover {
     outline: none;
 }
 
+/* ? третий блок */
+
 .form_box_send {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.form_box_send-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.form_box_send-box p {
+    font-size: 12px;
+}
+
+.form_box_send-checkbox {
+    padding: 0;
+    width: 28px;
+    height: 28px;
+    border-radius: 5px;
+}
+
+.form_box_send-checkbox input {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.form_box_send-box a {
+    text-decoration: none;
+    color: orange;
 }
 
 .form_box_send button {
@@ -122,24 +162,4 @@ fieldset:hover {
     border: none;
     border-radius: 5px;
     font-size: 18px;
-}
-
-.form_box_send label {
-    font-size: 12px;
-}
-
-.form_box_send-checkbox {
-    display: flex;
-    gap: 10px;
-}
-
-.form_box_send-checkbox input {
-    width: 28px;
-    height: 28px;
-    border-radius: 5px;
-}
-
-.form_box_send-checkbox a {
-    text-decoration: none;
-    color: orange;
 }
