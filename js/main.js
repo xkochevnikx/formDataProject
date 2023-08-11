@@ -1,6 +1,7 @@
 let form = document.querySelector('#form');
 form.addEventListener('submit', handleSubmit);
 
+//todo - функция принимает ноду и возвращает данные для отправки на сервер
 function serializeForm(formNode) {
     const { elements } = formNode;
     const data = [];
@@ -15,6 +16,7 @@ function serializeForm(formNode) {
     return data;
 }
 
+//todo - функция отправки данных на сервер
 async function fetchUsers(data) {
     const response = await fetch('http://localhost:3000/users', {
         method: 'POST',
@@ -26,17 +28,20 @@ async function fetchUsers(data) {
     return response;
 }
 
+//todo - функция навешивает класс ошибки на родителя (fieldset) инпута
 function addErrorClass(element) {
     let parent = element.parentNode;
     parent.classList.add('error');
 }
 
+//todo - мапер ошибок
 let mapTypeErrorMessage = {
     name: 'Введите имя',
     phone: 'Введите номер телефона',
     service: 'Выберете услугу',
 };
 
+//todo - функция добавления сообщения об ошибке
 function addAllAlertMessage(element, errorString) {
     addErrorClass(element);
     let parentDiv = element.closest('div');
@@ -52,6 +57,7 @@ function addAllAlertMessage(element, errorString) {
     }
 }
 
+//todo - функция удаления данных об ошибки при каждом новом событии все затирается
 function removeError(element) {
     let parentDiv = element.closest('div');
     let parent = element.parentNode;
@@ -60,6 +66,7 @@ function removeError(element) {
     span?.remove();
 }
 
+//todo - функция валидации
 function validate(formNode) {
     let result = false;
     Array.from(formNode).forEach((element) => {
@@ -100,6 +107,7 @@ function validate(formNode) {
     return result;
 }
 
+//todo - функция добавления лоадера на страницу
 function loader() {
     let wrap = document.querySelector('.form-box_wrapper');
     Array.from(wrap.children).map((child) => {
@@ -108,9 +116,10 @@ function loader() {
     wrap.style.cssText = 'margin: 0; padding: 0';
     let loader = wrap.nextElementSibling;
     loader.style.cssText =
-        'display: block; width: 100%; display: flex; flex-direction: column; gap: 20px; align-items: center; justify-content: center; ';
+        'display: block; width: 100%; display: flex; flex-direction: column; gap: 20px; align-items: center; justify-content: center;';
 }
 
+//todo основной обработчик события
 async function handleSubmit(e) {
     e.preventDefault();
     console.log(validate(e.target));
