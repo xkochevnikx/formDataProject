@@ -12,7 +12,7 @@
     background-color: antiquewhite;
 }
 
-.form-box {
+.form_container {
     max-width: 600px;
     min-height: 100%;
     margin-left: auto;
@@ -21,7 +21,7 @@
     align-items: center;
 }
 
-.form-box_wrapper {
+.form_wrapper {
     display: flex;
     flex-direction: column;
     gap: 48px;
@@ -42,7 +42,10 @@ fieldset {
     border: 1px solid red;
 }
 
-#errorSpan {
+#errorName,
+#errorPhone,
+#errorSelect {
+    display: none;
     margin-top: 14px;
     margin-left: 16px;
     color: red;
@@ -53,32 +56,32 @@ fieldset:hover {
 }
 
 /* первый блок */
-.form-box_desc {
+.form_desc {
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.form-box_desc-title {
+.form_desc__title {
     color: #212121;
     font-size: 28px;
     font-weight: 500;
     line-height: 135%;
 }
 
-.form-box_desc-description {
+.form_desc__description {
     font-size: 18px;
     line-height: 145%;
 }
 
 /* ! второй блок */
-.form-box_form {
+.form {
     display: flex;
     flex-direction: column;
     gap: 28px;
 }
 
-.form-box_form-star {
+.form__star {
     position: relative;
     bottom: 4px;
     left: 2px;
@@ -103,22 +106,22 @@ input:-webkit-autofill:active {
     color: #000;
 }
 
-.form-box_form legend {
+.form legend {
     margin-left: 5px;
     padding: 5px;
 }
 
-.form-box_form-select {
+.form__select {
     outline: none;
     border: none;
     width: 100%;
 }
 
-.form-box_form-comments {
+.form__comments {
     min-height: 130px;
 }
 
-.form-box_form-comments textarea {
+.form__comments textarea {
     height: 100%;
     width: 100%;
     border: none;
@@ -127,41 +130,41 @@ input:-webkit-autofill:active {
 
 /* ? третий блок */
 
-.form_box_send {
+.form__send {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.form_box_send-box {
+.rules-box {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
-.form_box_send-box p {
+.rules-box p {
     font-size: 12px;
 }
 
-.form_box_send-checkbox {
+.rules-box__checkbox {
     padding: 0;
     width: 28px;
     height: 28px;
     border-radius: 5px;
 }
 
-.form_box_send-checkbox input {
+.rules-box__checkbox input {
     width: 100%;
     height: 100%;
     border-radius: 5px;
 }
 
-.form_box_send-box a {
+.rules-box a {
     text-decoration: none;
     color: orange;
 }
 
-.form_box_send button {
+.form__send button {
     min-width: 200px;
     height: 52px;
     background-color: orange;
@@ -174,6 +177,12 @@ input:-webkit-autofill:active {
 /* loader */
 .loader-box {
     display: none;
+    width: 100%;
+    /* display: flex; */
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
 }
 
 .loader {

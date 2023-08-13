@@ -8,67 +8,64 @@
     </head>
     <body>
         <div class="container">
-            <div class="form-box">
-                <!-- обертка -->
-                <div class="form-box_wrapper">
-                    <!-- Первый  блок с описанием начало -->
-                    <div class="form-box_desc">
-                        <h3 class="form-box_desc-title">Обратный звонок</h3>
-                        <p class="form-box_desc-description">
+            <div class="form_container">
+                <div class="form_wrapper">
+                    <div class="form_desc">
+                        <h3 class="form_desc__title">Обратный звонок</h3>
+                        <p class="form_desc__description">
                             Заполните форму ниже и мы свяжемся с Вами в
                             ближайшее время.
                         </p>
                     </div>
-                    <!-- Первый  блок с описанием конец -->
-
-                    <!--!Второй  блок с формой начало -->
-                    <form class="form-box_form" id="form">
+                    <form class="form" id="form">
                         <div>
                             <fieldset>
                                 <legend>
-                                    Ваше имя<span class="form-box_form-star"
-                                        >*</span
-                                    >
+                                    Ваше имя<span class="form__star">*</span>
                                 </legend>
                                 <input
+                                    required
                                     name="name"
                                     class="input"
                                     type="text"
                                     placeholder="Укажите свое имя"
                                     autofocus
+                                    minlength="2"
+                                    maxlength="30"
                                 />
                             </fieldset>
+                            <span id="errorName">Введите имя</span>
                         </div>
                         <div>
                             <fieldset>
                                 <legend>
-                                    Номер телефона<span
-                                        class="form-box_form-star"
+                                    Номер телефона<span class="form__star"
                                         >*</span
                                     >
                                 </legend>
                                 <input
+                                    required
                                     data-length="12"
                                     name="phone"
                                     class="input"
                                     type="tel"
                                     placeholder="+7 (___)-___-__-__"
-                                    autocomplete
                                     autofocus
+                                    maxlength="12"
                                 />
                             </fieldset>
+                            <span id="errorPhone">Введите номер телефона</span>
                         </div>
                         <div>
                             <fieldset>
                                 <legend>
-                                    Выбранная услуга<span
-                                        class="form-box_form-star"
+                                    Выбранная услуга<span class="form__star"
                                         >*</span
                                     >
                                 </legend>
                                 <select
                                     name="service"
-                                    class="form-box_form-select"
+                                    class="form__select"
                                     form="form"
                                 >
                                     <option value="" selected disabled>
@@ -85,23 +82,24 @@
                                     </option>
                                 </select>
                             </fieldset>
+                            <span id="errorSelect">Выберете услугу</span>
                         </div>
                         <div>
-                            <fieldset class="form-box_form-comments">
+                            <fieldset class="form__comments">
                                 <legend>Комментарий</legend>
                                 <textarea
                                     placeholder="Опишите Ваш вопрос или просьбу и удобное время для связи."
                                     name="comment"
                                     cols="40"
                                     rows="5"
+                                    maxlength="1000"
                                 ></textarea>
                             </fieldset>
                         </div>
 
-                        <!--todo Третий  блок с формой отправки начало -->
-                        <div class="form_box_send">
-                            <div class="form_box_send-box">
-                                <fieldset class="form_box_send-checkbox">
+                        <div class="form__send">
+                            <div class="rules-box">
+                                <fieldset class="rules-box__checkbox">
                                     <input
                                         value=""
                                         type="checkbox"
@@ -114,12 +112,9 @@
                                     <a href="">с правилами</a>
                                 </p>
                             </div>
-
-                            <button type="submit">Отправить</button>
+                            <button type="submit" disabled>Отправить</button>
                         </div>
-                        <!--todo Третий  блок с формой отправки конец -->
                     </form>
-                    <!--!Второй  блок с формой конец -->
                 </div>
                 <div class="loader-box">
                     <h2>Запрос отправлен...</h2>

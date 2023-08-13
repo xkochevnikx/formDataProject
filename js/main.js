@@ -34,13 +34,6 @@ function addErrorClass(element) {
     parent.classList.add('error');
 }
 
-//todo - мапер ошибок
-let mapTypeErrorMessage = {
-    name: 'Введите имя',
-    phone: 'Введите номер телефона',
-    service: 'Выберете услугу',
-};
-
 //todo - функция добавления сообщения об ошибке
 function addAllAlertMessage(element, errorString) {
     addErrorClass(element);
@@ -110,19 +103,24 @@ function validate(formNode) {
 //todo - функция добавления лоадера на страницу
 function loader() {
     let wrap = document.querySelector('.form-box_wrapper');
-    Array.from(wrap.children).map((child) => {
-        child.remove();
-    });
-    wrap.style.cssText = 'margin: 0; padding: 0';
-    let loader = wrap.nextElementSibling;
-    loader.style.cssText =
-        'display: block; width: 100%; display: flex; flex-direction: column; gap: 20px; align-items: center; justify-content: center;';
+    let loader = document.querySelector('.loader_box');
+    wrap.style.display = 'none';
+    loader.style.display = 'flex';
+
+    // версия первая сложная, решено переписать на более простую
+    // let wrap = document.querySelector('.form-box_wrapper');
+    // Array.from(wrap.children).map((child) => {
+    //     child.remove();
+    // });
+    // wrap.style.cssText = 'margin: 0; padding: 0';
+    // let loader = wrap.nextElementSibling;
+    // loader.style.cssText =
+    //     'display: block; width: 100%; display: flex; flex-direction: column; gap: 20px; align-items: center; justify-content: center;';
 }
 
 //todo основной обработчик события
 async function handleSubmit(e) {
     e.preventDefault();
-    console.log(validate(e.target));
     if (!validate(e.target)) {
         let data = serializeForm(e.target);
         loader();
