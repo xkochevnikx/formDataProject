@@ -44,7 +44,8 @@ fieldset {
 
 #errorName,
 #errorPhone,
-#errorSelect {
+#errorSelect,
+#errorEmail {
     display: none;
     margin-top: 14px;
     margin-left: 16px;

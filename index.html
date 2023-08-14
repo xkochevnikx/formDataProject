@@ -17,19 +17,17 @@
                             ближайшее время.
                         </p>
                     </div>
-                    <form class="form" id="form">
+                    <form class="form" id="form" name="form">
                         <div>
                             <fieldset>
                                 <legend>
                                     Ваше имя<span class="form__star">*</span>
                                 </legend>
                                 <input
-                                    required
+                                    class="required input"
                                     name="name"
-                                    class="input"
                                     type="text"
                                     placeholder="Укажите свое имя"
-                                    autofocus
                                     minlength="2"
                                     maxlength="30"
                                 />
@@ -44,17 +42,31 @@
                                     >
                                 </legend>
                                 <input
-                                    required
+                                    class="required input"
                                     data-length="12"
                                     name="phone"
-                                    class="input"
                                     type="tel"
                                     placeholder="+7 (___)-___-__-__"
-                                    autofocus
                                     maxlength="12"
                                 />
                             </fieldset>
-                            <span id="errorPhone">Введите номер телефона</span>
+                            <span id="errorPhone"
+                                >Введите ваш номер телефона</span
+                            >
+                        </div>
+                        <div>
+                            <fieldset>
+                                <legend>
+                                    Ваша почта<span class="form__star">*</span>
+                                </legend>
+                                <input
+                                    class="required input"
+                                    name="email"
+                                    type="email"
+                                    placeholder="Введите почту"
+                                />
+                            </fieldset>
+                            <span id="errorEmail">Введите вашу почту</span>
                         </div>
                         <div>
                             <fieldset>
@@ -65,10 +77,10 @@
                                 </legend>
                                 <select
                                     name="service"
-                                    class="form__select"
+                                    class="form__select required"
                                     form="form"
                                 >
-                                    <option value="" selected disabled>
+                                    <option selected disabled>
                                         Выберите услугу из списка
                                     </option>
                                     <option value="life">
@@ -88,6 +100,7 @@
                             <fieldset class="form__comments">
                                 <legend>Комментарий</legend>
                                 <textarea
+                                    class="required"
                                     placeholder="Опишите Ваш вопрос или просьбу и удобное время для связи."
                                     name="comment"
                                     cols="40"
@@ -112,7 +125,7 @@
                                     <a href="">с правилами</a>
                                 </p>
                             </div>
-                            <button type="submit" disabled>Отправить</button>
+                            <button type="submit">Отправить</button>
                         </div>
                     </form>
                 </div>
@@ -122,6 +135,6 @@
                 </div>
             </div>
         </div>
-        <script src="./js/main.js"></script>
+        <script defer src="./js/main.js"></script>
     </body>
 </html>

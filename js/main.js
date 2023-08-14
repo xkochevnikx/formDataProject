@@ -1,5 +1,13 @@
 let form = document.querySelector('#form');
+let nameInput = document.form.name;
 form.addEventListener('submit', handleSubmit);
+form.addEventListener('focusin', handleFocus);
+form.addEventListener('focusout', handleBlur);
+let placeholder = null;
+
+setTimeout(() => {
+    nameInput.focus();
+}, 1000);
 
 //todo - функция принимает ноду и возвращает данные для отправки на сервер
 function serializeForm(formNode) {
@@ -9,11 +17,21 @@ function serializeForm(formNode) {
         .filter((element) => !!element.name)
         .map((element) => {
             const { name, value } = element;
-            if (element.type !== 'checkbox') {
-                data.push({ [name]: value });
-            }
+            data.push({ [name]: value });
         });
     return data;
+}
+
+//обработка фокуса
+function handleFocus(e) {
+    let input = e.target;
+    placeholder = input.placeholder;
+    input.placeholder = '';
+}
+
+function handleBlur(e) {
+    let input = e.target;
+    input.placeholder = placeholder;
 }
 
 //todo - функция отправки данных на сервер
@@ -37,17 +55,6 @@ function addErrorClass(element) {
 //todo - функция добавления сообщения об ошибке
 function addAllAlertMessage(element, errorString) {
     addErrorClass(element);
-    let parentDiv = element.closest('div');
-    let alert = document.createElement('span');
-    alert.setAttribute('id', 'errorSpan');
-    if (errorString) {
-        alert.textContent = `${errorString}`;
-        parentDiv.appendChild(alert);
-    }
-    if (!errorString) {
-        alert.textContent = `${mapTypeErrorMessage[element.name]}`;
-        parentDiv.appendChild(alert);
-    }
 }
 
 //todo - функция удаления данных об ошибки при каждом новом событии все затирается
@@ -62,41 +69,7 @@ function removeError(element) {
 //todo - функция валидации
 function validate(formNode) {
     let result = false;
-    Array.from(formNode).forEach((element) => {
-        removeError(element);
-        if (
-            element.tagName === 'INPUT' &&
-            element.type !== 'checkbox' &&
-            !element.value.trim()
-        ) {
-            result = true;
-            addAllAlertMessage(element);
-        }
-        if (
-            element.tagName === 'INPUT' &&
-            element.value.trim() &&
-            element.dataset.length
-        ) {
-            if (
-                element.value.length > element.dataset.length ||
-                element.value.length < element.dataset.length
-            ) {
-                result = true;
-                addAllAlertMessage(
-                    element,
-                    'Номер телефона должен состоять из 12 символов.'
-                );
-            }
-        }
-        if (element.tagName === 'SELECT' && !element.value.trim()) {
-            result = true;
-            addAllAlertMessage(element);
-        }
-        if (element.type === 'checkbox' && !element.checked) {
-            result = true;
-            addErrorClass(element);
-        }
-    });
+
     return result;
 }
 
@@ -106,25 +79,17 @@ function loader() {
     let loader = document.querySelector('.loader_box');
     wrap.style.display = 'none';
     loader.style.display = 'flex';
-
-    // версия первая сложная, решено переписать на более простую
-    // let wrap = document.querySelector('.form-box_wrapper');
-    // Array.from(wrap.children).map((child) => {
-    //     child.remove();
-    // });
-    // wrap.style.cssText = 'margin: 0; padding: 0';
-    // let loader = wrap.nextElementSibling;
-    // loader.style.cssText =
-    //     'display: block; width: 100%; display: flex; flex-direction: column; gap: 20px; align-items: center; justify-content: center;';
 }
 
 //todo основной обработчик события
 async function handleSubmit(e) {
     e.preventDefault();
+    let inputs = document.querySelectorAll('.required');
+    console.log(inputs);
     if (!validate(e.target)) {
-        let data = serializeForm(e.target);
-        loader();
-        let response = await fetchUsers(data);
+        // let data = serializeForm(inputs);
+        // loader();
+        // let response = await fetchUsers(data);
         // if (response.ok) {
         //     successFetch();
         // } else {
