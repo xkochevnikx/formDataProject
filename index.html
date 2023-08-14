@@ -18,7 +18,7 @@
                         </p>
                     </div>
 
-                    <form class="form" id="form" name="form">
+                    <form class="form" name="form">
                         <div>
                             <fieldset class="form__item">
                                 <legend class="form__item-legend">
@@ -100,15 +100,16 @@
                                     </option>
                                 </select>
                             </fieldset>
-                            <span id="errorSelect">Выберете услугу</span>
+                            <span id="errorService">Выберете услугу</span>
                         </div>
-                        <div>
+                        <div class="comments-box">
                             <fieldset class="form__item">
                                 <legend class="form__item-legend">
                                     Комментарий
                                 </legend>
+
                                 <textarea
-                                    class="required form__item-textarea"
+                                    class="form__item-textarea"
                                     placeholder="Опишите Ваш вопрос или просьбу и удобное время для связи."
                                     name="comment"
                                     cols="40"
@@ -116,14 +117,14 @@
                                     maxlength="1000"
                                 ></textarea>
                             </fieldset>
-                            <span class="form__counter"></span>
+                            <span class="form__counter">1000</span>
                         </div>
 
                         <div class="form__send">
                             <div class="rules-box">
                                 <fieldset class="rules-box__checkbox">
                                     <input
-                                        class="rules-box__input"
+                                        class="rules-box__input required"
                                         value=""
                                         type="checkbox"
                                         name="rules"

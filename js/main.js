@@ -1,9 +1,15 @@
-let form = document.querySelector('#form');
+let form = document.querySelector('.form');
+let counter = document.querySelector('.form__counter');
+let textarea = document.querySelector('.form__item-textarea');
 let nameInput = document.form.name;
 form.addEventListener('submit', handleSubmit);
 form.addEventListener('focusin', handleFocus);
 form.addEventListener('focusout', handleBlur);
+textarea.addEventListener('input', handleCounter);
 let placeholder = null;
+
+let span = document.querySelector('#errorName');
+console.log(span);
 
 setTimeout(() => {
     nameInput.focus();
@@ -20,6 +26,12 @@ function serializeForm(formNode) {
             data.push({ [name]: value });
         });
     return data;
+}
+
+//todo функция для отображения счетчика поля комментариев
+function handleCounter() {
+    let count = textarea.maxLength - textarea.value.length;
+    counter.innerText = `${count}`;
 }
 
 //обработка фокуса
@@ -53,15 +65,21 @@ function addErrorClass(element) {
 }
 
 //todo - функция добавления сообщения об ошибке
-function addAllAlertMessage(element, errorString) {
+function addAlertMessage(element) {
     addErrorClass(element);
+    let name = element.name;
+
+    let span = document.querySelector('#errorName');
+    console.log(span);
 }
 
 //todo - функция удаления данных об ошибки при каждом новом событии все затирается
 function removeError(element) {
-    let parentDiv = element.closest('div');
+    let name = element.name;
     let parent = element.parentNode;
-    let span = parentDiv.querySelector('#errorSpan');
+    let span = document.querySelector(
+        `${'#error' + name[0]?.toUpperCase() + name?.slice(1)}`
+    );
     parent.classList.remove('error');
     span?.remove();
 }
@@ -69,7 +87,13 @@ function removeError(element) {
 //todo - функция валидации
 function validate(formNode) {
     let result = false;
-
+    for (let index = 0; index < formNode.length; index++) {
+        const input = formNode[index];
+        removeError(input);
+        if (input.name === 'name' && input.value === '') {
+            addAlertMessage(input);
+        }
+    }
     return result;
 }
 
@@ -85,15 +109,15 @@ function loader() {
 async function handleSubmit(e) {
     e.preventDefault();
     let inputs = document.querySelectorAll('.required');
-    console.log(inputs);
-    if (!validate(e.target)) {
-        // let data = serializeForm(inputs);
-        // loader();
-        // let response = await fetchUsers(data);
-        // if (response.ok) {
-        //     successFetch();
-        // } else {
-        //     errorFetch();
-        // }
-    }
+    validate(inputs);
+    // if (!validate(e.target)) {
+    //     let data = serializeForm(inputs);
+    //     loader();
+    //     let response = await fetchUsers(data);
+    //     if (response.ok) {
+    //         successFetch();
+    //     } else {
+    //         errorFetch();
+    //     }
+    // }
 }

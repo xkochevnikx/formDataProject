@@ -10,6 +10,7 @@
     width: 100vw;
     height: 100vh;
     background-color: antiquewhite;
+    overflow-y: scroll;
 }
 
 .form_container {
@@ -24,7 +25,7 @@
 .form_wrapper {
     display: flex;
     flex-direction: column;
-    gap: 48px;
+    gap: 18px;
     margin-left: 55px;
     margin-right: 55px;
 }
@@ -44,7 +45,7 @@
 
 #errorName,
 #errorPhone,
-#errorSelect,
+#errorService,
 #errorEmail {
     display: none;
     margin-top: 14px;
@@ -113,11 +114,20 @@ input:-webkit-autofill:active {
     padding: 5px;
 }
 
+.comments-box {
+    position: relative;
+}
+
 .form__item-textarea {
     height: 100%;
     width: 100%;
     border: none;
     outline: none;
+    resize: vertical;
+}
+
+.form__counter {
+    font-size: 8px;
 }
 
 /* ? третий блок */
