@@ -29,7 +29,7 @@
     margin-right: 55px;
 }
 
-fieldset {
+.form__item {
     display: flex;
     align-items: center;
     padding: 0 17px 17px 17px;
@@ -82,13 +82,14 @@ fieldset:hover {
     gap: 28px;
 }
 
-.form__star {
+.form__item-star {
     position: relative;
     bottom: 4px;
     left: 2px;
 }
 
-.input {
+.form__item-input,
+.form__item-select {
     border: none;
     width: 100%;
     height: 100%;
@@ -107,22 +108,12 @@ input:-webkit-autofill:active {
     color: #000;
 }
 
-.form legend {
+.form__item-legend {
     margin-left: 5px;
     padding: 5px;
 }
 
-.form__select {
-    outline: none;
-    border: none;
-    width: 100%;
-}
-
-.form__comments {
-    min-height: 130px;
-}
-
-.form__comments textarea {
+.form__item-textarea {
     height: 100%;
     width: 100%;
     border: none;
@@ -143,7 +134,7 @@ input:-webkit-autofill:active {
     gap: 10px;
 }
 
-.rules-box p {
+.rules-box__desc {
     font-size: 12px;
 }
 
@@ -154,18 +145,18 @@ input:-webkit-autofill:active {
     border-radius: 5px;
 }
 
-.rules-box__checkbox input {
+.rules-box__input {
     width: 100%;
     height: 100%;
     border-radius: 5px;
 }
 
-.rules-box a {
+.rules-box__link {
     text-decoration: none;
     color: orange;
 }
 
-.form__send button {
+.form__button {
     min-width: 200px;
     height: 52px;
     background-color: orange;

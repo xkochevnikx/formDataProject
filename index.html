@@ -17,14 +17,17 @@
                             ближайшее время.
                         </p>
                     </div>
+
                     <form class="form" id="form" name="form">
                         <div>
-                            <fieldset>
-                                <legend>
-                                    Ваше имя<span class="form__star">*</span>
+                            <fieldset class="form__item">
+                                <legend class="form__item-legend">
+                                    Ваше имя<span class="form__item-star"
+                                        >*</span
+                                    >
                                 </legend>
                                 <input
-                                    class="required input"
+                                    class="required form__item-input"
                                     name="name"
                                     type="text"
                                     placeholder="Укажите свое имя"
@@ -35,14 +38,14 @@
                             <span id="errorName">Введите имя</span>
                         </div>
                         <div>
-                            <fieldset>
-                                <legend>
-                                    Номер телефона<span class="form__star"
+                            <fieldset class="form__item">
+                                <legend class="form__item-legend">
+                                    Номер телефона<span class="form__item-star"
                                         >*</span
                                     >
                                 </legend>
                                 <input
-                                    class="required input"
+                                    class="required form__item-input"
                                     data-length="12"
                                     name="phone"
                                     type="tel"
@@ -55,12 +58,14 @@
                             >
                         </div>
                         <div>
-                            <fieldset>
-                                <legend>
-                                    Ваша почта<span class="form__star">*</span>
+                            <fieldset class="form__item">
+                                <legend class="form__item-legend">
+                                    Ваша почта<span class="form__item-star"
+                                        >*</span
+                                    >
                                 </legend>
                                 <input
-                                    class="required input"
+                                    class="required form__item-input"
                                     name="email"
                                     type="email"
                                     placeholder="Введите почту"
@@ -69,15 +74,16 @@
                             <span id="errorEmail">Введите вашу почту</span>
                         </div>
                         <div>
-                            <fieldset>
-                                <legend>
-                                    Выбранная услуга<span class="form__star"
+                            <fieldset class="form__item">
+                                <legend class="form__item-legend">
+                                    Выбранная услуга<span
+                                        class="form__item-star"
                                         >*</span
                                     >
                                 </legend>
                                 <select
+                                    class="form__item-select required"
                                     name="service"
-                                    class="form__select required"
                                     form="form"
                                 >
                                     <option selected disabled>
@@ -97,10 +103,12 @@
                             <span id="errorSelect">Выберете услугу</span>
                         </div>
                         <div>
-                            <fieldset class="form__comments">
-                                <legend>Комментарий</legend>
+                            <fieldset class="form__item">
+                                <legend class="form__item-legend">
+                                    Комментарий
+                                </legend>
                                 <textarea
-                                    class="required"
+                                    class="required form__item-textarea"
                                     placeholder="Опишите Ваш вопрос или просьбу и удобное время для связи."
                                     name="comment"
                                     cols="40"
@@ -108,24 +116,30 @@
                                     maxlength="1000"
                                 ></textarea>
                             </fieldset>
+                            <span class="form__counter"></span>
                         </div>
 
                         <div class="form__send">
                             <div class="rules-box">
                                 <fieldset class="rules-box__checkbox">
                                     <input
+                                        class="rules-box__input"
                                         value=""
                                         type="checkbox"
                                         name="rules"
                                         id="rules"
                                     />
                                 </fieldset>
-                                <p>
+                                <p class="rules-box__desc">
                                     Я ознакомлен и согласен <br />
-                                    <a href="">с правилами</a>
+                                    <a class="rules-box__link" href=""
+                                        >с правилами</a
+                                    >
                                 </p>
                             </div>
-                            <button type="submit">Отправить</button>
+                            <button class="form__button" type="submit">
+                                Отправить
+                            </button>
                         </div>
                     </form>
                 </div>
