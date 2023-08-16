@@ -9,7 +9,6 @@ form.addEventListener('focusin', handleFocus);
 form.addEventListener('focusout', handleBlur);
 textarea.addEventListener('input', handleCounter);
 successButton.addEventListener('click', handleCloseSuccess);
-
 let placeholder = null;
 
 //todo - функция принимает ноду и возвращает данные для отправки на сервер
@@ -103,11 +102,13 @@ function loaderFn() {
     document.querySelector('.loader_box').style.display = 'flex';
 }
 
+//todo - запрос успешно отправлен
 function successFetch() {
     document.querySelector('.loader_box').style.display = 'none';
     successButton.style.display = 'flex';
 }
 
+//todo - закрываем окно с информацией об успешной отправке данных
 function handleCloseSuccess() {
     successButton.style.display = 'none';
     formWrapper.style.display = 'flex';
@@ -117,7 +118,6 @@ function handleCloseSuccess() {
 async function handleSubmit(e) {
     e.preventDefault();
     let inputs = document.querySelectorAll('.required');
-
     if (!validate(inputs)) {
         let data = serializeForm(inputs);
         form.reset();
