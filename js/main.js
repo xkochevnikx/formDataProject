@@ -1,11 +1,15 @@
 let form = document.querySelector('.form');
 let counter = document.querySelector('.form__counter');
 let textarea = document.querySelector('.form__item-textarea');
+let successButton = document.querySelector('.success_box');
+let formWrapper = document.querySelector('.form_wrapper');
 let nameInput = document.form.name;
 form.addEventListener('submit', handleSubmit);
 form.addEventListener('focusin', handleFocus);
 form.addEventListener('focusout', handleBlur);
 textarea.addEventListener('input', handleCounter);
+successButton.addEventListener('click', handleCloseSuccess);
+
 let placeholder = null;
 
 //todo - функция принимает ноду и возвращает данные для отправки на сервер
@@ -95,8 +99,18 @@ function validate(formNode) {
 
 //todo - функция добавления лоадера на страницу
 function loaderFn() {
-    document.querySelector('.form_wrapper').style.display = 'none';
+    formWrapper.style.display = 'none';
     document.querySelector('.loader_box').style.display = 'flex';
+}
+
+function successFetch() {
+    document.querySelector('.loader_box').style.display = 'none';
+    successButton.style.display = 'flex';
+}
+
+function handleCloseSuccess() {
+    successButton.style.display = 'none';
+    formWrapper.style.display = 'flex';
 }
 
 //todo основной обработчик события
@@ -106,7 +120,12 @@ async function handleSubmit(e) {
 
     if (!validate(inputs)) {
         let data = serializeForm(inputs);
+        form.reset();
+        textarea.value = '';
         loaderFn();
         let response = await fetchUsers(data);
+        if (response.ok) {
+            successFetch();
+        }
     }
 }

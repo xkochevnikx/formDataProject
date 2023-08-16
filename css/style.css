@@ -213,3 +213,20 @@ input:-webkit-autofill:active {
         transform: rotate(360deg) scale(1.3);
     }
 }
+
+.success_box {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 50px;
+}
+
+.success_box__btn {
+    padding: 10px 20px;
+    background: transparent;
+    border-radius: 5px;
+    border: 2px solid orangered;
+    cursor: pointer;
+}
