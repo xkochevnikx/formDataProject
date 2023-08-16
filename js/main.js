@@ -10,14 +10,12 @@ let placeholder = null;
 
 //todo - функция принимает ноду и возвращает данные для отправки на сервер
 function serializeForm(formNode) {
-    const { elements } = formNode;
+    console.log(formNode);
     const data = [];
-    Array.from(elements)
-        .filter((element) => !!element.name)
-        .map((element) => {
-            const { name, value } = element;
-            data.push({ [name]: value });
-        });
+    Array.from(formNode).map((element) => {
+        const { name, value } = element;
+        data.push({ [name]: value });
+    });
     return data;
 }
 
@@ -27,7 +25,7 @@ function handleCounter() {
     counter.innerText = `${count}`;
 }
 
-//обработка фокуса
+//todo - обработка фокуса
 function handleFocus(e) {
     let input = e.target;
     placeholder = input.placeholder;
@@ -35,6 +33,7 @@ function handleFocus(e) {
     removeError(e.target);
 }
 
+//todo - обработка выхода из фокуса
 function handleBlur(e) {
     let input = e.target;
     input.placeholder = placeholder;
@@ -67,7 +66,7 @@ function addAlertMessage(element) {
     spanError?.classList.add('error');
 }
 
-//todo - функция удаления данных об ошибке при каждом новом событии все затирается
+//todo - функция удаления данных об ошибке
 function removeError(element) {
     element.parentNode.classList.remove('error');
     let name = element.name;
@@ -82,10 +81,12 @@ function validate(formNode) {
     for (let index = 0; index < formNode.length; index++) {
         const input = formNode[index];
         removeError(input);
-        if (!input.value.trim() && input.type !== 'checkbox') {
+        if (input.value === '' && input.type !== 'checkbox') {
+            result = true;
             addAlertMessage(input);
         }
         if (input.type === 'checkbox' && !input.checked) {
+            result = true;
             addErrorClass(input);
         }
     }
@@ -93,26 +94,19 @@ function validate(formNode) {
 }
 
 //todo - функция добавления лоадера на страницу
-function loader() {
-    let wrap = document.querySelector('.form-box_wrapper');
-    let loader = document.querySelector('.loader_box');
-    wrap.style.display = 'none';
-    loader.style.display = 'flex';
+function loaderFn() {
+    document.querySelector('.form_wrapper').style.display = 'none';
+    document.querySelector('.loader_box').style.display = 'flex';
 }
 
 //todo основной обработчик события
 async function handleSubmit(e) {
     e.preventDefault();
     let inputs = document.querySelectorAll('.required');
-    validate(inputs);
-    // if (!validate(e.target)) {
-    //     let data = serializeForm(inputs);
-    //     loader();
-    //     let response = await fetchUsers(data);
-    //     if (response.ok) {
-    //         successFetch();
-    //     } else {
-    //         errorFetch();
-    //     }
-    // }
+
+    if (!validate(inputs)) {
+        let data = serializeForm(inputs);
+        loaderFn();
+        let response = await fetchUsers(data);
+    }
 }
