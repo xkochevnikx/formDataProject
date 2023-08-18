@@ -17,16 +17,22 @@ let placeholder = null;
 //todo - функция принимает ноду и возвращает данные для отправки на сервер
 function serializeForm(formNode) {
     const data = [];
-    data.push({ [textarea.name]: textarea.value });
     Array.from(formNode).map((element) => {
         if (element.type !== 'checkbox') {
             const { name, value } = element;
             data.push({ [name]: value });
-        } else {
+        }
+        if (element.type === 'checkbox') {
             const { name, checked } = element;
             data.push({ [name]: checked });
         }
+        if (element.tagName === 'DIV') {
+            let { name, value } = element.dataset;
+            data.push({ [name]: value });
+        }
     });
+    data.push({ [textarea.name]: textarea.value });
+
     return data;
 }
 
@@ -50,7 +56,7 @@ function handleBlur(e) {
     input.placeholder = placeholder;
 }
 
-//todo - события блюр на дивах нет поэтому добавил отдельный хелпер удаляющий ошибку при "фокусе"
+//todo - события блюр на дивах нет поэтому добавил отдельный хелпер удаляющий ошибку при
 function removeSelectError() {
     let value = this.dataset.value;
     if (!value) {
@@ -85,6 +91,7 @@ function addAlertMessage(element) {
     spanError?.classList.add('error');
 }
 
+//todo - хелпер для получения названия из дива (селекта)
 function divSelectChecker(element) {
     let name = null;
     if (element.tagName === 'DIV') {
