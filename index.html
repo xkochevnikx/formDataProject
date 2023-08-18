@@ -73,7 +73,7 @@
                             </fieldset>
                             <span class="errorEmail">Введите вашу почту</span>
                         </div>
-                        <div>
+                        <div class="select_box">
                             <fieldset class="form__item">
                                 <legend class="form__item-legend">
                                     Выбранная услуга<span
@@ -81,33 +81,31 @@
                                         >*</span
                                     >
                                 </legend>
-                                <select
-                                    class="form__item-select required"
-                                    name="service"
-                                    form="form"
-                                >
-                                    <option value="" selected disabled>
-                                        Выберите услугу из списка
-                                    </option>
-                                    <option value="life">
-                                        Страхование жизни
-                                    </option>
-                                    <option value="business">
-                                        Страхование бизнеса
-                                    </option>
-                                    <option value="property">
-                                        Страхование имущества
-                                    </option>
-                                </select>
+                                <div data-name="service" class="select_header">
+                                    <span class="current_select"
+                                        >Выберите услугу из списка</span
+                                    >
+                                    <div class="header_icon">˅</div>
+                                </div>
                             </fieldset>
-                            <span class="errorService">Выберете услугу</span>
+                            <div class="select_body">
+                                <div class="select_item" data-value="life">
+                                    Страхование жизни
+                                </div>
+                                <div class="select_item" data-value="business">
+                                    Страхование бизнеса
+                                </div>
+                                <div class="select_item" data-value="property">
+                                    Страхование имущества
+                                </div>
+                            </div>
                         </div>
+                        <span class="errorService">Выберете услугу</span>
                         <div class="comments_box">
                             <fieldset class="form__item">
                                 <legend class="form__item-legend">
                                     Комментарий
                                 </legend>
-
                                 <textarea
                                     class="form__item-textarea"
                                     placeholder="Опишите Ваш вопрос или просьбу и удобное время для связи."

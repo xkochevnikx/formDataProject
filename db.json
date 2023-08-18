@@ -1,21 +1,3 @@
 {
-  "users": [
-    [
-      {
-        "name": "Cвятослав"
-      },
-      {
-        "phone": "+79516731080"
-      },
-      {
-        "email": "xsas@dec"
-      },
-      {
-        "service": "business"
-      },
-      {
-        "rules": ""
-      }
-    ]
-  ]
+    "users": []
 }
