@@ -38,8 +38,8 @@
 }
 
 .errorName,
-.errorPhone,
 .errorService,
+.errorPhone,
 .errorEmail {
     opacity: 0;
     transition: opacity 0.5s;
@@ -251,7 +251,7 @@ input:-webkit-autofill:active {
     width: 100%;
     flex-direction: column;
     position: absolute;
-    top: 100%;
+    top: 78%;
     left: 0;
     right: 0;
     border: 1px solid #000;

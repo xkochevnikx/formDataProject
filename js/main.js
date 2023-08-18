@@ -11,6 +11,7 @@ form.addEventListener('focusout', handleBlur);
 textarea.addEventListener('input', handleCounter);
 successButton.addEventListener('click', handleCloseSuccess);
 select.addEventListener('click', openSelect);
+select.addEventListener('click', removeSelectError);
 let placeholder = null;
 
 //todo - функция принимает ноду и возвращает данные для отправки на сервер
@@ -49,6 +50,14 @@ function handleBlur(e) {
     input.placeholder = placeholder;
 }
 
+//todo - события блюр на дивах нет поэтому добавил отдельный хелпер удаляющий ошибку при "фокусе"
+function removeSelectError() {
+    let value = this.dataset.value;
+    if (!value) {
+        removeError(this);
+    }
+}
+
 //todo - функция отправки данных на сервер
 async function fetchUsers(data) {
     const response = await fetch('http://localhost:3000/users', {
@@ -69,17 +78,27 @@ function addErrorClass(element) {
 
 //todo - функция добавления сообщения об ошибке
 function addAlertMessage(element) {
+    let name = divSelectChecker(element);
     addErrorClass(element);
-    let name = element.name;
     let selector = `${'.error' + name[0]?.toUpperCase() + name?.slice(1)}`;
     let spanError = document.querySelector(selector);
     spanError?.classList.add('error');
 }
 
+function divSelectChecker(element) {
+    let name = null;
+    if (element.tagName === 'DIV') {
+        name = element.dataset.name;
+    } else {
+        name = element.name;
+    }
+    return name;
+}
+
 //todo - функция удаления данных об ошибке
 function removeError(element) {
+    let name = divSelectChecker(element);
     element.parentNode.classList.remove('error');
-    let name = element.name;
     let selector = `${'.error' + name[0]?.toUpperCase() + name?.slice(1)}`;
     let spanError = document.querySelector(selector);
     spanError?.classList.remove('error');
@@ -90,6 +109,7 @@ function validate(formNode) {
     let result = false;
     for (let node of formNode) {
         const input = node;
+
         removeError(input);
         if (input.value === '' && input.type !== 'checkbox') {
             result = true;
@@ -98,6 +118,10 @@ function validate(formNode) {
         if (input.type === 'checkbox' && !input.checked) {
             result = true;
             addErrorClass(input);
+        }
+        if (input.tagName === 'DIV' && !input.dataset.value) {
+            result = true;
+            addAlertMessage(input);
         }
     }
     return result;
@@ -140,6 +164,7 @@ function openSelect() {
 //todo основной обработчик события
 async function handleSubmit(e) {
     e.preventDefault();
+
     let inputs = document.querySelectorAll('.required');
 
     if (!validate(inputs)) {
