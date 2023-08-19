@@ -8,27 +8,25 @@
     </head>
     <body>
         <div class="container">
-            <div class="form_container">
-                <div class="form_wrapper">
-                    <div class="form_desc">
-                        <h3 class="form_desc__title">Обратный звонок</h3>
-                        <p class="form_desc__description">
+            <div class="form-container">
+                <div class="form-wrapper isActiv">
+                    <div class="form-desc">
+                        <h3 class="form-desc__title">Обратный звонок</h3>
+                        <p class="form-desc__description">
                             Заполните форму ниже и мы свяжемся с Вами в
                             ближайшее время.
                         </p>
                     </div>
 
-                    <form class="form" name="form">
+                    <form class="form" name="form" novalidate>
                         <div>
-                            <fieldset class="form__item">
-                                <legend class="form__item-legend">
-                                    Ваше имя<span class="form__item-star"
-                                        >*</span
-                                    >
+                            <fieldset class="fieldset">
+                                <legend class="form-legend">
+                                    Ваше имя<span class="form-star">*</span>
                                 </legend>
                                 <input
-                                    class="required form__item-input"
-                                    name="name"
+                                    class="required form-input"
+                                    data-name="name"
                                     type="text"
                                     placeholder="Укажите свое имя"
                                     minlength="2"
@@ -38,16 +36,16 @@
                             <span class="errorName">Введите имя</span>
                         </div>
                         <div>
-                            <fieldset class="form__item">
-                                <legend class="form__item-legend">
-                                    Номер телефона<span class="form__item-star"
+                            <fieldset class="fieldset">
+                                <legend class="form-legend">
+                                    Номер телефона<span class="form-star"
                                         >*</span
                                     >
                                 </legend>
                                 <input
-                                    class="required form__item-input"
+                                    class="required form-input"
                                     data-length="12"
-                                    name="phone"
+                                    data-name="phone"
                                     type="tel"
                                     placeholder="+7 (___)-___-__-__"
                                     maxlength="12"
@@ -58,63 +56,58 @@
                             >
                         </div>
                         <div>
-                            <fieldset class="form__item">
-                                <legend class="form__item-legend">
-                                    Ваша почта<span class="form__item-star"
-                                        >*</span
-                                    >
+                            <fieldset class="fieldset">
+                                <legend class="form-legend">
+                                    Ваша почта<span class="form-star">*</span>
                                 </legend>
                                 <input
-                                    class="required form__item-input"
-                                    name="email"
+                                    class="required form-input"
+                                    data-name="email"
                                     type="email"
                                     placeholder="Введите почту"
                                 />
                             </fieldset>
                             <span class="errorEmail">Введите вашу почту</span>
                         </div>
-                        <div class="select_box">
-                            <fieldset class="form__item">
-                                <legend class="form__item-legend">
-                                    Выбранная услуга<span
-                                        class="form__item-star"
+                        <div class="select-box">
+                            <fieldset class="fieldset fieldset-select">
+                                <legend class="form-legend">
+                                    Выбранная услуга<span class="form-star"
                                         >*</span
                                     >
                                 </legend>
                                 <div
                                     data-name="service"
-                                    class="select_header required"
+                                    class="select-header required"
                                 >
-                                    <span class="current_select"
+                                    <span class="current-select"
                                         >Выберите услугу из списка</span
                                     >
-                                    <div class="header_icon">˅</div>
+                                    <div class="header-icon">˅</div>
                                 </div>
                             </fieldset>
                             <span class="errorService">Выберете услугу</span>
 
-                            <div class="select_body">
-                                <div class="select_item" data-value="life">
+                            <div class="select-body">
+                                <div class="select-item" data-value="life">
                                     Страхование жизни
                                 </div>
-                                <div class="select_item" data-value="business">
+                                <div class="select-item" data-value="business">
                                     Страхование бизнеса
                                 </div>
-                                <div class="select_item" data-value="property">
+                                <div class="select-item" data-value="property">
                                     Страхование имущества
                                 </div>
                             </div>
                         </div>
 
-                        <div class="comments_box">
-                            <fieldset class="form__item">
-                                <legend class="form__item-legend">
-                                    Комментарий
-                                </legend>
+                        <div class="comments-box">
+                            <fieldset class="fieldset">
+                                <legend class="form-legend">Комментарий</legend>
                                 <textarea
-                                    class="form__item-textarea"
+                                    class="form-textarea"
                                     placeholder="Опишите Ваш вопрос или просьбу и удобное время для связи."
-                                    name="comment"
+                                    data-name="comment"
                                     cols="40"
                                     rows="5"
                                     maxlength="1000"
@@ -124,19 +117,19 @@
                         </div>
 
                         <div class="form__send">
-                            <div class="rules_box">
-                                <fieldset class="rules_box__checkbox">
+                            <div class="rules-box">
+                                <fieldset class="fieldset rules-box__checkbox">
                                     <input
-                                        class="rules_box__input required"
+                                        class="rules-box__input required"
                                         value=""
                                         type="checkbox"
-                                        name="rules"
+                                        data-name="rules"
                                         id="rules"
                                     />
                                 </fieldset>
-                                <p class="rules_box__desc">
+                                <p class="rules-box__desc">
                                     Я ознакомлен и согласен <br />
-                                    <a class="rules_box__link" href=""
+                                    <a class="rules-box__link" href=""
                                         >с правилами</a
                                     >
                                 </p>
@@ -147,16 +140,16 @@
                         </div>
                     </form>
                 </div>
-                <div class="loader_box">
+                <div class="loader-box">
                     <h2>Запрос отправлен...</h2>
                     <div class="loader"></div>
                 </div>
-                <div class="success_box">
+                <div class="success-box">
                     <h2>
                         Благодарим, Ваш запрос успешно отправлен, мы свяжемся с
                         Вами в ближайшее время!
                     </h2>
-                    <button class="success_box__btn">Закрыть</button>
+                    <button class="success-box__btn">Закрыть</button>
                 </div>
             </div>
         </div>

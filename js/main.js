@@ -1,17 +1,19 @@
-let form = document.querySelector('.form');
-let counter = document.querySelector('.form__counter');
-let textarea = document.querySelector('.form__item-textarea');
-let successButton = document.querySelector('.success_box');
-let formWrapper = document.querySelector('.form_wrapper');
-let nameInput = document.form.name;
-let select = document.querySelector('.select_header');
+let formContainer = document.querySelector('.form-container');
+let formWrapper = formContainer.querySelector('.form-wrapper');
+let successBox = formContainer.querySelector('.success-box');
+let loaderBox = formContainer.querySelector('.loader-box');
+let form = formWrapper.querySelector('.form');
+let counter = form.querySelector('.form__counter');
+let selectBody = form.querySelector('.select-body');
+let textarea = form.querySelector('.form-textarea');
+let select = form.querySelector('.fieldset-select');
 form.addEventListener('submit', handleSubmit);
 form.addEventListener('focusin', handleFocus);
 form.addEventListener('focusout', handleBlur);
 textarea.addEventListener('input', handleCounter);
-successButton.addEventListener('click', handleCloseSuccess);
-select.addEventListener('click', openSelect);
-select.addEventListener('click', removeSelectError);
+successBox.addEventListener('click', handleCloseSuccess);
+select.addEventListener('click', activeSelect);
+formWrapper.addEventListener('click', closeSelect);
 let placeholder = null;
 
 //todo - функция принимает ноду и возвращает данные для отправки на сервер
@@ -56,14 +58,6 @@ function handleBlur(e) {
     input.placeholder = placeholder;
 }
 
-//todo - события блюр на дивах нет поэтому добавил отдельный хелпер удаляющий ошибку при
-function removeSelectError() {
-    let value = this.dataset.value;
-    if (!value) {
-        removeError(this);
-    }
-}
-
 //todo - функция отправки данных на сервер
 async function fetchUsers(data) {
     const response = await fetch('http://localhost:3000/users', {
@@ -78,36 +72,33 @@ async function fetchUsers(data) {
 
 //todo - функция навешивает класс ошибки на родителя (fieldset) инпута
 function addErrorClass(element) {
-    let parent = element.parentNode;
-    parent.classList.add('error');
+    let parent = element.closest('.fieldset');
+    parent?.classList.add('error');
 }
 
 //todo - функция добавления сообщения об ошибке
 function addAlertMessage(element) {
-    let name = divSelectChecker(element);
     addErrorClass(element);
-    let selector = `${'.error' + name[0]?.toUpperCase() + name?.slice(1)}`;
+    let selector = `${
+        '.error' +
+        element.dataset.name[0]?.toUpperCase() +
+        element.dataset.name?.slice(1)
+    }`;
     let spanError = document.querySelector(selector);
     spanError?.classList.add('error');
 }
 
-//todo - хелпер для получения названия из дива (селекта)
-function divSelectChecker(element) {
-    let name = null;
-    if (element.tagName === 'DIV') {
-        name = element.dataset.name;
-    } else {
-        name = element.name;
-    }
-    return name;
-}
-
 //todo - функция удаления данных об ошибке
 function removeError(element) {
-    let name = divSelectChecker(element);
-    element.parentNode.classList.remove('error');
-    let selector = `${'.error' + name[0]?.toUpperCase() + name?.slice(1)}`;
-    let spanError = document.querySelector(selector);
+    let parent = element?.closest('.fieldset');
+    if (!parent?.classList.contains('error')) return;
+    parent.classList.remove('error');
+    let selector = `${
+        '.error' +
+        element.dataset.name[0]?.toUpperCase() +
+        element.dataset.name?.slice(1)
+    }`;
+    let spanError = form.querySelector(selector);
     spanError?.classList.remove('error');
 }
 
@@ -118,69 +109,67 @@ function validate(formNode) {
         const input = node;
 
         removeError(input);
-        if (input.value === '' && input.type !== 'checkbox') {
+
+        if (
+            (input.value === '' || !input.dataset.value) &&
+            input.type !== 'checkbox'
+        ) {
             result = true;
             addAlertMessage(input);
         }
-        if (input.type === 'checkbox' && !input.checked) {
+
+        if (!input.checked) {
             result = true;
             addErrorClass(input);
         }
-        if (input.tagName === 'DIV' && !input.dataset.value) {
-            result = true;
-            addAlertMessage(input);
-        }
     }
+
     return result;
 }
 
 //todo - функция добавления лоадера на страницу
 function loaderFn() {
-    formWrapper.style.display = 'none';
-    document.querySelector('.loader_box').style.display = 'flex';
+    formWrapper.classList.remove('isActiv');
+    loaderBox.classList.add('isActiv');
 }
 
 //todo - запрос успешно отправлен
 function successFetch() {
-    document.querySelector('.loader_box').style.display = 'none';
-    successButton.style.display = 'flex';
+    loaderBox.classList.remove('isActiv');
+    successBox.classList.add('isActiv');
 }
 
 //todo - закрываем окно с информацией об успешной отправке данных
 function handleCloseSuccess() {
-    successButton.style.display = 'none';
-    formWrapper.style.display = 'flex';
+    successBox.classList.remove('isActiv');
+    formWrapper.classList.add('isActiv');
 }
 
 //todo - открыть селект
-function openSelect() {
-    document.querySelector('.select_body').classList.toggle('isActiv');
-    document.querySelectorAll('.select_item').forEach((select) => {
-        select.addEventListener('click', function () {
-            let content = this.innerText.trim();
-            let value = this.dataset.value;
-            document.querySelector('.current_select').innerText = content;
-            document
-                .querySelector('.select_header')
-                .setAttribute('data-value', value);
-            document.querySelector('.select_body').classList.remove('isActiv');
-        });
-    });
+function activeSelect() {
+    selectBody.classList.toggle('isActiv');
+}
+
+//todo - закрываю селект за пределами формы
+function closeSelect(e) {
+    if (e.target.classList.contains('form-wrapper')) {
+        selectBody.classList.remove('isActiv');
+    }
 }
 
 //todo основной обработчик события
 async function handleSubmit(e) {
     e.preventDefault();
 
-    let inputs = document.querySelectorAll('.required');
+    let inputs = form.querySelectorAll('.required');
 
     if (!validate(inputs)) {
         let data = serializeForm(inputs);
-        form.reset();
-        counter.innerText = '1000';
         loaderFn();
         let response = await fetchUsers(data);
         if (response.ok) {
+            form.reset();
+            counter.innerText = '1000';
             successFetch();
         }
     }
