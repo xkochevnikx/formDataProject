@@ -19,21 +19,14 @@ let placeholder = null;
 //todo - функция принимает ноду и возвращает данные для отправки на сервер
 function serializeForm(formNode) {
     const data = [];
-    Array.from(formNode).map((element) => {
-        if (element.type !== 'checkbox') {
-            const { name, value } = element;
-            data.push({ [name]: value });
-        }
-        if (element.type === 'checkbox') {
-            const { name, checked } = element;
-            data.push({ [name]: checked });
-        }
-        if (element.tagName === 'DIV') {
-            let { name, value } = element.dataset;
-            data.push({ [name]: value });
+    Array.from(formNode).forEach((element) => {
+        if (element.closest('.rules-box__input')) {
+            data.push({ [element.dataset.name]: element.checked });
+        } else {
+            data.push({ [element.dataset.name]: element.value });
         }
     });
-    data.push({ [textarea.name]: textarea.value });
+    data.push({ [textarea.dataset.name]: textarea.value });
 
     return data;
 }
@@ -70,60 +63,44 @@ async function fetchUsers(data) {
     return response;
 }
 
-//todo - функция навешивает класс ошибки на родителя (fieldset) инпута
-function addErrorClass(element) {
-    let parent = element.closest('.fieldset');
-    parent?.classList.add('error');
-}
-
 //todo - функция добавления сообщения об ошибке
 function addAlertMessage(element) {
-    addErrorClass(element);
-    let selector = `${
-        '.error' +
-        element.dataset.name[0]?.toUpperCase() +
-        element.dataset.name?.slice(1)
-    }`;
-    let spanError = document.querySelector(selector);
-    spanError?.classList.add('error');
+    if (element.closest('fieldset:invalid')) {
+        let selector = `${
+            '.error' +
+            element.dataset.name[0]?.toUpperCase() +
+            element.dataset.name?.slice(1)
+        }`;
+        let spanError = form.querySelector(selector);
+        spanError?.classList.add('error');
+    }
 }
 
 //todo - функция удаления данных об ошибке
 function removeError(element) {
-    let parent = element?.closest('.fieldset');
-    if (!parent?.classList.contains('error')) return;
-    parent.classList.remove('error');
-    let selector = `${
-        '.error' +
-        element.dataset.name[0]?.toUpperCase() +
-        element.dataset.name?.slice(1)
-    }`;
-    let spanError = form.querySelector(selector);
-    spanError?.classList.remove('error');
+    let error = element.closest('fieldset:invalid');
+    if (error) {
+        let selector = `${
+            '.error' +
+            element.dataset.name[0]?.toUpperCase() +
+            element.dataset.name?.slice(1)
+        }`;
+        let spanError = form.querySelector(selector);
+        spanError?.classList.remove('error');
+    }
 }
 
 //todo - функция валидации
 function validate(formNode) {
     let result = false;
-    for (let node of formNode) {
+    Array.from(formNode).forEach((node) => {
         const input = node;
-
         removeError(input);
-
-        if (
-            (input.value === '' || !input.dataset.value) &&
-            input.type !== 'checkbox'
-        ) {
+        if (input.closest('fieldset:invalid')) {
             result = true;
             addAlertMessage(input);
         }
-
-        if (!input.checked) {
-            result = true;
-            addErrorClass(input);
-        }
-    }
-
+    });
     return result;
 }
 

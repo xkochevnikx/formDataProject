@@ -33,12 +33,21 @@
     display: none;
 }
 
-.fieldset {
+.fieldset:valid {
     display: flex;
     align-items: center;
     padding: 0 17px 17px 17px;
     border-radius: 6px;
     border: 1px solid #a19595;
+    color: #a19595;
+}
+
+.fieldset:invalid {
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    padding: 0 17px 17px 17px;
+    border-radius: 6px;
     color: #a19595;
 }
 
@@ -59,10 +68,8 @@
     opacity: 1;
 }
 
-fieldset,
-.form__item:hover {
+.fieldset:hover {
     color: black;
-    border: 1px solid black;
 }
 
 /* первый блок */
@@ -91,9 +98,9 @@ fieldset,
     gap: 8px;
 }
 
-.fieldset.error {
+/* .fieldset.error {
     border: 1px solid red;
-}
+} */
 
 .form-star {
     position: relative;
@@ -187,6 +194,10 @@ input:-webkit-autofill:active {
     border-radius: 5px;
     font-size: 18px;
 }
+
+/* .form__button:disabled {
+    background-color: rgb(157, 142, 115);
+} */
 
 /* loader */
 .loader-box.isActiv {
