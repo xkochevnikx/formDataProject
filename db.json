@@ -2,62 +2,17 @@
   "users": [
     [
       {
-        "name": "cd"
+        "name": "вмс"
       },
       {
-        "phone": "xsx"
+        "phone": ""
       },
       {
-        "email": "sxw@rfcv"
-      },
-      {},
-      {
-        "rules": ""
-      }
-    ],
-    [
-      {
-        "name": "aaa"
-      },
-      {
-        "phone": "aaa"
-      },
-      {
-        "email": "xwex@xecx"
+        "email": ""
       },
       {},
       {
-        "rules": ""
-      }
-    ],
-    [
-      {
-        "name": "wsxws"
-      },
-      {
-        "phone": "ded"
-      },
-      {
-        "email": "vrevk@crc"
-      },
-      {},
-      {
-        "rules": ""
-      }
-    ],
-    [
-      {
-        "name": "œΩ"
-      },
-      {
-        "phone": " cccc"
-      },
-      {
-        "email": "aaa@mclmw"
-      },
-      {},
-      {
-        "rules": ""
+        "rules": false
       },
       {
         "comment": ""
@@ -65,17 +20,17 @@
     ],
     [
       {
-        "name": "xwxz"
+        "name": ""
       },
       {
-        "phone": "zq2saw"
+        "phone": ""
       },
       {
-        "email": "xzws@cdc"
+        "email": ""
       },
       {},
       {
-        "rules": ""
+        "rules": false
       },
       {
         "comment": ""
@@ -83,32 +38,17 @@
     ],
     [
       {
-        "name": " fd "
+        "name": ""
       },
       {
-        "phone": "cwxw"
+        "phone": ""
       },
       {
-        "email": "cc@ssd"
-      },
-      {},
-      {
-        "comment": ""
-      }
-    ],
-    [
-      {
-        "name": "cdsc"
-      },
-      {
-        "phone": "xwdx"
-      },
-      {
-        "email": "fds@fd"
+        "email": ""
       },
       {},
       {
-        "rules": true
+        "rules": false
       },
       {
         "comment": ""
@@ -116,17 +56,17 @@
     ],
     [
       {
-        "name": "dc"
+        "name": ""
       },
       {
-        "phone": "csa"
+        "phone": ""
       },
       {
-        "email": "q@cdv"
+        "email": ""
       },
       {},
       {
-        "rules": true
+        "rules": false
       },
       {
         "comment": ""
@@ -134,52 +74,17 @@
     ],
     [
       {
-        "name": " dd "
+        "name": ""
       },
       {
-        "phone": "sxcs"
+        "phone": ""
       },
       {
-        "email": "sxa@dd"
-      },
-      {},
-      {
-        "rules": true
-      },
-      {
-        "comment": ""
-      }
-    ],
-    [
-      {
-        "name": " x. xz"
-      },
-      {
-        "phone": "zxZ"
-      },
-      {
-        "email": "scs@klsdfnv"
+        "email": ""
       },
       {},
       {
-        "rules": true
-      },
-      {
-        "comment": ""
-      }
-    ],
-    [
-      {
-        "name": "x S"
-      },
-      {
-        "phone": " sd"
-      },
-      {
-        "email": "sa@f"
-      },
-      {
-        "rules": true
+        "rules": false
       },
       {
         "comment": ""

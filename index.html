@@ -9,7 +9,7 @@
     <body>
         <div class="container">
             <div class="form-container">
-                <div class="form-wrapper isActiv">
+                <div class="form-wrapper active">
                     <div class="form-desc">
                         <h3 class="form-desc__title">Обратный звонок</h3>
                         <p class="form-desc__description">
@@ -19,118 +19,93 @@
                     </div>
 
                     <form class="form" name="form" novalidate>
-                        <div>
-                            <fieldset class="fieldset">
-                                <legend class="form-legend">
-                                    Ваше имя<span class="form-star">*</span>
-                                </legend>
-                                <input
-                                    required
-                                    class="required form-input"
-                                    data-name="name"
-                                    type="text"
-                                    placeholder="Укажите свое имя"
-                                    minlength="2"
-                                    maxlength="30"
-                                />
-                            </fieldset>
-                            <span class="errorName">Введите имя</span>
-                        </div>
-                        <div>
-                            <fieldset class="fieldset">
-                                <legend class="form-legend">
-                                    Номер телефона<span class="form-star"
-                                        >*</span
-                                    >
-                                </legend>
-                                <input
-                                    required
-                                    class="required form-input"
-                                    data-length="12"
-                                    data-name="phone"
-                                    type="tel"
-                                    placeholder="+7 (___)-___-__-__"
-                                    maxlength="12"
-                                />
-                            </fieldset>
-                            <span class="errorPhone"
-                                >Введите ваш номер телефона</span
+                        <div class="form-field">
+                            <input
+                                id="name"
+                                class="form__input"
+                                name="name"
+                                placeholder="Введите имя"
+                                type="text"
+                            />
+                            <label class="form__label"
+                                >Имя<span class="form-star">*</span></label
                             >
                         </div>
-                        <div>
-                            <fieldset class="fieldset">
-                                <legend class="form-legend">
-                                    Ваша почта<span class="form-star">*</span>
-                                </legend>
-                                <input
-                                    required
-                                    class="required form-input"
-                                    data-name="email"
-                                    type="email"
-                                    placeholder="Введите почту"
-                                />
-                            </fieldset>
-                            <span class="errorEmail">Введите вашу почту</span>
+                        <div class="form-field">
+                            <input
+                                id="phone"
+                                class="form__input"
+                                name="phone"
+                                placeholder="Введите номер телефона"
+                                type="tel"
+                            />
+                            <label class="form__label"
+                                >Телефон<span class="form-star">*</span></label
+                            >
                         </div>
-                        <div class="select-box">
-                            <fieldset class="fieldset fieldset-select">
-                                <legend class="form-legend">
-                                    Выбранная услуга<span class="form-star"
-                                        >*</span
-                                    >
-                                </legend>
-                                <div data-name="service" class="select-header">
-                                    <span class="current-select"
-                                        >Выберите услугу из списка</span
-                                    >
-                                    <div class="header-icon">˅</div>
-                                </div>
-                            </fieldset>
-                            <span class="errorService">Выберете услугу</span>
-
-                            <div class="select-body">
-                                <div class="select-item" data-value="life">
-                                    Страхование жизни
-                                </div>
-                                <div class="select-item" data-value="business">
+                        <div class="form-field">
+                            <input
+                                id="email"
+                                class="form__input"
+                                name="email"
+                                placeholder="Введите Вашу почту"
+                                type="email"
+                            />
+                            <label class="form__label"
+                                >Почта<span class="form-star">*</span></label
+                            >
+                        </div>
+                        <div class="form-field">
+                            <select
+                                name="service"
+                                class="form__select"
+                                form="form"
+                            >
+                                <option value="" selected disabled>
+                                    Выберите услугу из списка
+                                </option>
+                                <option value="life">Страхование жизни</option>
+                                <option value="business">
                                     Страхование бизнеса
-                                </div>
-                                <div class="select-item" data-value="property">
+                                </option>
+                                <option value="property">
                                     Страхование имущества
-                                </div>
-                            </div>
+                                </option>
+                            </select>
+                            <label class="form__label"
+                                >Выбор услуги<span class="form-star"
+                                    >*</span
+                                ></label
+                            >
                         </div>
-
-                        <div class="comments-box">
-                            <fieldset class="fieldset">
-                                <legend class="form-legend">Комментарий</legend>
-                                <textarea
-                                    class="form-textarea"
-                                    placeholder="Опишите Ваш вопрос или просьбу и удобное время для связи."
-                                    data-name="comment"
-                                    cols="40"
-                                    rows="5"
-                                    maxlength="1000"
-                                ></textarea>
-                            </fieldset>
-                            <span class="form__counter">1000</span>
+                        <div class="form-field">
+                            <label class="form__label-textaria"
+                                >Комментарий</label
+                            >
+                            <textarea
+                                class="form__input-textaria"
+                                placeholder="Опишите Ваш вопрос или просьбу и удобное время для связи."
+                                data-name="comment"
+                                cols="40"
+                                rows="5"
+                                maxlength="1000"
+                            ></textarea>
                         </div>
 
                         <div class="form__send">
-                            <div class="rules-box">
-                                <fieldset class="fieldset rules-box__checkbox">
-                                    <input
-                                        required
-                                        class="rules-box__input required"
-                                        value=""
-                                        type="checkbox"
-                                        data-name="rules"
-                                        id="rules"
-                                    />
-                                </fieldset>
-                                <p class="rules-box__desc">
+                            <div class="rules">
+                                <input
+                                    required
+                                    class="rules__input required"
+                                    value=""
+                                    type="checkbox"
+                                    data-name="rules"
+                                    id="rules"
+                                />
+
+                                <p class="rules__desc">
                                     Я ознакомлен и согласен <br />
-                                    <a class="rules-box__link" href=""
+                                    <a class="rules__link" href="#" alt="rules"
                                         >с правилами</a
                                     >
                                 </p>
