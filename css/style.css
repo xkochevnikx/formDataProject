@@ -45,7 +45,7 @@
 }
 
 .form__input,
-.form__input-textaria,
+.form__textaria,
 .form__select {
     padding: 1rem;
     width: 100%;
@@ -68,7 +68,7 @@
     border: 1px solid red;
 }
 
-.form__input-textaria {
+.form__textaria {
     resize: vertical;
     min-height: 5rem;
     max-height: 10rem;
@@ -115,18 +115,25 @@
     box-shadow: 0 0 0 0.2rem rgba(222, 8, 8, 0.4);
 }
 
-.form__input-textaria::placeholder {
+.form__textaria::placeholder {
     color: #212529;
     opacity: 0.4;
 }
 
-.form__input-textaria:focus::placeholder {
+.form__textaria:focus::placeholder {
     color: transparent;
 }
 
-.form__input-textaria:focus {
+.form__textaria:focus {
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(158, 158, 158, 0.25);
+}
+
+.form__counter {
+    font-size: 0.5rem;
+    position: absolute;
+    left: 90%;
+    top: 100%;
 }
 
 input:-webkit-autofill,
@@ -144,9 +151,6 @@ input:-webkit-autofill:active {
     -moz-appearance: none; */
     appearance: none;
     position: relative;
-}
-
-.form__select::after {
 }
 
 .form__select:focus {

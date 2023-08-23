@@ -8,6 +8,7 @@ let inputs = form.querySelectorAll('.required');
 let textarea = form.querySelector('.form__textaria');
 form.addEventListener('submit', handleSubmit);
 form.addEventListener('input', handleInput);
+textarea.addEventListener('input', handleCounter);
 successBox.addEventListener('click', handleCloseSuccess);
 
 function submitOpen() {
@@ -28,7 +29,6 @@ function handleInput(e) {
 }
 
 function inputCheck(element) {
-    console.log(element);
     if (
         !element.classList.contains('required-select') &&
         element.type !== 'checkbox'
@@ -64,7 +64,7 @@ async function handleSubmit(e) {
     let response = await fetchUsers(data);
     if (response.ok) {
         form.reset();
-        // counter.innerText = '1000';
+        counter.innerText = '1000/1000';
         successFetch();
     }
 }
