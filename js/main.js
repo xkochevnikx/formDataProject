@@ -3,78 +3,63 @@ let successBox = document.querySelector('.success-box');
 let loaderBox = document.querySelector('.loader-box');
 let form = formWrapper.querySelector('.form');
 let counter = form.querySelector('.form__counter');
-let selectBody = form.querySelector('.select-body');
-let selectItem = selectBody.querySelectorAll('.select-item');
-let textarea = form.querySelector('.form-textarea');
-let select = form.querySelector('#fieldset-select');
-let span = form.querySelector('.error-service');
-let choiseSelect = form.querySelector('.current-select');
 form.addEventListener('submit', handleSubmit);
 form.addEventListener('focusin', handleFocus);
 form.addEventListener('focusout', handleBlur);
-textarea.addEventListener('input', handleCounter);
 successBox.addEventListener('click', handleCloseSuccess);
-select.addEventListener('click', activeSelect);
-formWrapper.addEventListener('click', closeSelect);
-let placeholder = null;
-let currentSelect = choiseSelect.innerText;
-
-//todo - обработчики на селект айтемы
-Array.from(selectItem).forEach((item) => {
-    item.addEventListener('click', selectItemchoice);
-});
 
 //todo основной обработчик события
 async function handleSubmit(e) {
     e.preventDefault();
 
     let inputs = form.querySelectorAll('.required');
+    console.log(inputs);
 
-    if (!validate(inputs)) {
-        let data = serializeForm(inputs);
-        loaderFn();
-        // let response = await fetchUsers(data);
-        // if (response.ok) {
-        //     form.reset();
-        //     selectReset();
-        //     counter.innerText = '1000';
-        //     successFetch();
-        // }
-    }
+    // if (!validate(inputs)) {
+    //     let data = serializeForm(inputs);
+    //     loaderFn();
+    //     let response = await fetchUsers(data);
+    //     if (response.ok) {
+    //         form.reset();
+    //         selectReset();
+    //         counter.innerText = '1000';
+    //         successFetch();
+    //     }
+    // }
 }
 
-//todo - функция валидации
-function validate(formNode) {
-    let result = false;
-    Array.from(formNode).forEach((node) => {
-        const input = node;
-        toggleError(input);
-    });
-    return result;
-}
+// //todo - функция валидации
+// function validate(formNode) {
+//     let result = false;
+//     Array.from(formNode).forEach((node) => {
+//         const input = node;
+//         toggleError(input);
+//     });
+//     return result;
+// }
 
 //todo - функция принимает ноду и возвращает данные для отправки на сервер
-function serializeForm(formNode) {
-    const data = [];
+// function serializeForm(formNode) {
+//     const data = [];
 
-    Array.from(formNode).forEach((element) => {
-        if (element.closest('.rules__input')) {
-            data.push({ [element.dataset.name]: element.checked });
-        }
+//     Array.from(formNode).forEach((element) => {
+//         if (element.closest('.rules__input')) {
+//             data.push({ [element.dataset.name]: element.checked });
+//         }
 
-        if (element.closest('.form-input')) {
-            data.push({ [element.dataset.name]: element.value });
-        }
+//         if (element.closest('.form-input')) {
+//             data.push({ [element.dataset.name]: element.value });
+//         }
 
-        if (element.closest('.select-header')) {
-            data.push({ [element.dataset.name]: element.dataset.value });
-        }
-    });
+//         if (element.closest('.select-header')) {
+//             data.push({ [element.dataset.name]: element.dataset.value });
+//         }
+//     });
 
-    data.push({ [textarea.dataset.name]: textarea.value });
+//     data.push({ [textarea.dataset.name]: textarea.value });
 
-    return data;
-}
+//     return data;
+// }
 
 //todo - функция отправки данных на сервер
 async function fetchUsers(data) {
@@ -96,17 +81,11 @@ function handleCounter() {
 
 //todo - обработка фокуса
 function handleFocus(e) {
-    let input = e.target;
-    placeholder = input.placeholder;
-    input.placeholder = '';
     // toggleError(e.target);
 }
 
 //todo - обработка выхода из фокуса
-function handleBlur(e) {
-    let input = e.target;
-    input.placeholder = placeholder;
-}
+function handleBlur(e) {}
 
 //todo - функция переключения данных об ошибке
 function toggleError(element) {
@@ -131,34 +110,4 @@ function successFetch() {
 function handleCloseSuccess() {
     successBox.classList.remove('active');
     formWrapper.classList.add('active');
-    select.classList.remove('choise');
-}
-
-//todo - открыть селект
-function activeSelect() {
-    selectBody.classList.toggle('active');
-}
-
-//todo - закрываю селект за пределами формы
-function closeSelect(e) {
-    if (e.target.classList.contains('form-wrapper')) {
-        selectBody.classList.remove('active');
-    }
-}
-
-//TODO - обработчик на полях селекта
-function selectItemchoice() {
-    choiseSelect.innerText = this.innerText;
-    form.querySelector('.select-header').setAttribute(
-        'data-value',
-        this.dataset.value
-    );
-    selectBody.classList.remove('active');
-    select.classList.add('choise');
-}
-
-//todo - очистка селекта после отправки формы
-function selectReset() {
-    choiseSelect.innerText = currentSelect;
-    form.querySelector('.select-header').removeAttribute('data-value');
 }
