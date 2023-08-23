@@ -25,5 +25,5 @@
 
 ![Watch the video](https://www.youtube.com/watch?v=bVcPdWl8ZL8)
 
-<video src='https://www.youtube.com/watch?v=bVcPdWl8ZL8' width=180/>
+[![Demo CountPages alpha](https://share.gifyoutube.com/KzB6Gb.gif)](https://www.youtube.com/watch?v=bVcPdWl8ZL8)
 
