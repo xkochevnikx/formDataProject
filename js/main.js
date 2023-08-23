@@ -51,7 +51,6 @@ function inputCheck(element) {
         element.setAttribute('data-valid', true);
     }
     if (element.classList.contains('rules__input') && element.checked) {
-        console.log(element);
         element.setAttribute('data-valid', true);
     }
 }
@@ -81,7 +80,7 @@ function serializeForm(formNode) {
     });
 
     data.push({ [textarea.dataset.name]: textarea.value });
-
+    console.log(data);
     return data;
 }
 

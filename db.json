@@ -1,3 +1,64 @@
 {
-    "users": []
+  "users": [
+    [
+      {
+        "name": "Дмитрий "
+      },
+      {
+        "phone": "89515004972"
+      },
+      {
+        "email": "xsas@dec.com"
+      },
+      {
+        "service": "business"
+      },
+      {
+        "rules": true
+      },
+      {
+        "comment": "тест"
+      }
+    ],
+    [
+      {
+        "name": "святослав"
+      },
+      {
+        "phone": "+79516731080"
+      },
+      {
+        "email": "xsas@dec.com"
+      },
+      {
+        "service": "property"
+      },
+      {
+        "rules": true
+      },
+      {
+        "comment": ""
+      }
+    ],
+    [
+      {
+        "name": "Дмитрий "
+      },
+      {
+        "phone": "+79516731080"
+      },
+      {
+        "email": "xsas@dec.com"
+      },
+      {
+        "service": "business"
+      },
+      {
+        "rules": true
+      },
+      {
+        "comment": "привет мир!"
+      }
+    ]
+  ]
 }
